@@ -1,0 +1,1102 @@
+*supplements.html*
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GymX Supplements Store</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: black;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      min-height: 56px;
+    }
+
+    .navbar .logo {
+      font-size: 1.75rem;
+      color: #00ffea;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #00ffea;
+      background: #343a40;
+    }
+
+    .navbar-toggler {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      margin-left: 1rem;
+    }
+
+    .navbar-toggler span {
+      height: 4px;
+      width: 100%;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+  .navbar .logo { font-size: 1.4rem; }
+  .nav-links li a { font-size: 1rem; padding: 0.8rem 1rem; }
+      .navbar {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0.5rem 1rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        background: #212529;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links li a {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid #343a40;
+      }
+
+      .navbar-toggler {
+        display: flex;
+      }
+    }
+
+    section {
+      padding: 60px  20px;
+    }
+
+
+    .section-title {
+      color: #00ffcc;
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      color: #00c0a3;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      padding-top: 12px;
+      padding-left: 16px; /*Add left padding */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera */
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border: none;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+      width: 250px;
+      margin-right: 16px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffcc88;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card-body {
+      padding: 20px;
+      /* New changes */
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      justify-content: space-between;
+      height: 100%;
+      /*text-align: center; */
+    }
+
+    .card-title {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      color: #bbbbbb;
+      font-size: 14px;
+      margin-bottom: 4px;
+      text-align: left;
+      align-self: flex-start;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #00ffcc;
+      margin: 10px 0;
+      text-align: left;
+      margin-top: 4px;   /* smaller top margin */
+      margin-bottom: 10px; /* keep or adjust as needed */
+      align-self: flex-start;
+    }
+
+    .btn-cart {
+      background-color: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      padding: 6px 14px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .btn-cart:hover {
+      background-color: #00ffcc;
+      color: #000;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    @media (max-width: 576px) {
+  section { min-height: 100vh; padding: 40px 10px; }
+      .card {
+        width: 200px;
+      }
+
+      .card img {
+        height: 120px;
+      }
+    }
+
+    .card-text {
+      text-align: left;
+      align-self: flex-start;
+    }
+
+    .card-title {
+      text-align: left;
+      align-self: flex-start;
+    }
+
+    
+
+    /* Chatbot widget styles (namespace prefixed with gymx-) */
+    #gymx-chat-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #000;
+      border: 2px solid #00ffea;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px #00ffeaaa;
+      z-index: 9999;
+      transition: background 0.3s ease;
+    }
+
+    #gymx-chat-btn:hover {
+      background: #00ffea;
+    }
+
+    #gymx-chat-btn svg {
+      width: 28px;
+      height: 28px;
+      stroke: #00ffea;
+      transition: stroke 0.3s ease;
+    }
+
+    #gymx-chat-btn:hover svg {
+      stroke: #000;
+    }
+
+    #gymx-chat-window {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      width: 320px;
+      max-width: 90vw;
+      background: #121212;
+      border: 2px solid #00ffea;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffeaaa;
+      display: none;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #00ffea;
+      z-index: 9999;
+    }
+
+    #gymx-chat-header {
+      background: #000;
+      padding: 12px 16px;
+      font-weight: bold;
+      font-size: 18px;
+      border-bottom: 1px solid #00ffea;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #gymx-chat-header button {
+      background: transparent;
+      border: none;
+      color: #00ffea;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #gymx-chat-messages {
+      padding: 12px 16px;
+      height: 280px;
+      overflow-y: auto;
+      flex-grow: 1;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .gymx-chat-message {
+      margin-bottom: 14px;
+      max-width: 80%;
+      word-wrap: break-word;
+      padding: 8px 12px;
+      border-radius: 14px;
+    }
+
+    .gymx-chat-message.user {
+      background: #00ffea22;
+      color: #00ffea;
+      align-self: flex-end;
+    }
+
+    .gymx-chat-message.bot {
+      background: #00ffea0f;
+      color: #00ffea;
+      align-self: flex-start;
+    }
+
+    #gymx-chat-input-area {
+      border-top: 1px solid #00ffea;
+      padding: 10px 16px;
+      display: flex;
+      gap: 8px;
+      background: #000;
+    }
+
+    #gymx-chat-input {
+      flex-grow: 1;
+      background: #121212;
+      border: 1.5px solid #00ffea;
+      border-radius: 20px;
+      padding: 8px 14px;
+      color: #00ffea;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    #gymx-chat-input:focus {
+      border-color: #00ffeaee;
+    }
+
+    #gymx-chat-send-btn {
+      background: #00ffea;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    #gymx-chat-send-btn:hover {
+      background: #00c9b8;
+    }
+
+    #gymx-chat-send-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #000;
+    }
+
+    /* ====== Chatbot Widget End ======= */
+  
+/*.price-cart-row {
+  display: flex;
+  justify-content :space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
+}*/
+
+  /*Align price and cart*/
+
+.price-cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 16px; /* adds gap above the row */
+  gap: 10px;
+}
+
+.card-body .price {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+.card-body .btn-cart {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="logo">GymX Supplements</a>
+    <button class="navbar-toggler" aria-label="Toggle navigation"
+      onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#bmi">BMI</a></li>
+      <li><a href="index.html#Macro">Calorie planner</a></li>
+      <li><a href="#store" class="active">Store</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#loginModal">Login</a></li>
+    </ul>
+  </nav>
+  <br>
+  <!-- Section Template -->
+  <!-- Use this structure for each category like Creatine, Whey, Pre-Workout, Omega-3 -->
+
+  <!-- CREATINE -->
+  <section id="creatine">
+    <h2 class="section-title">Creatine</h2>
+    <div class="container mb-5">
+      <h3>Wellcore</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Well%20core/unflavoured.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Wellcore 100g Unflavoured</h5>
+            <p class="card-text"> Pure Micronised Creatine Monohydrate (100G, 33 Servings) Lab Tested | Unflavoured |
+              Enhanced Muscle Strength & Power | Fast Recovery</p>
+            <div class="price-cart-row">
+  <p class="price">₹899</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Well%20core/fruit%20fusion.avif" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Wellcore 307g <br>Fruit Fusion</h5>
+            <p class="card-text"> Pure Micronised Creatine Monohydrate Powder | (307 G,83 Servings) | Fruit Fusion | Rapid
+              Absorption | Enhanced Muscle Strength & Power | Fast Recovery | Increased Muscle Mass</p>
+            <div class="price-cart-row">
+  <p class="price">₹899</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Well%20core/mango.avif" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Wellcore 307g<br>Tropical Tango </h5>
+            <p class="card-text">Pure Micronised Creatine Monohydrate Powder | Tropical Tango (307g, 83 Servings) |
+              Rapid Absorption | Enhanced Muscle Strength & Power | Fast Recovery | Increased Muscle Mass</p>
+            <div class="price-cart-row">
+  <p class="price">₹899</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Well%20core/kiwi.webp" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Wellcore 307g <br>Kiwi Kick</h5>
+            <p class="card-text">Wellcore - Pure Micronised Creatine Monohydrate | Kiwi Kick (307g, 83 Servings) | Rapid
+              Absorption | Enhanced Muscle Strength & Power | Fast Recovery | Increased Muscle Mass</p>
+            <div class="price-cart-row">
+  <p class="price">₹1049</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>MuscleBlaze</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Muscle%20blaze/WhatsApp%20Image%202025-07-05%20at%208.24.13%20PM.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze 120g <br>Citrus Blast</h5>
+            <p class="card-text">MuscleBlaze Micronised Creatine Monohydrate CreAMP Powder, Citrus Blast (30 Servings,
+              120g) | Trustified Certified Creatine</p>
+            <div class="price-cart-row">
+  <p class="price">₹949</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Muscle%20blaze/Watermelon%20Kool%20.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MB Creatine 120g<br> Watermelon Kool Aid</h5>
+            <p class="card-text">MuscleBlaze Micronised Creatine Monohydrate CreAMP Powder, Watermelon Kool Aid (30
+              Servings, 120g) | Trustified Certified Creatine</p>
+            <div class="price-cart-row">
+  <p class="price">₹949</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Muscle%20blaze/Sunset%20Mango.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MB Creatine 280g<br>Sunset Mango</h5>
+            <p class="card-text">MuscleBlaze Micronised Creatine Monohydrate CreAMP Powder, Sunset Mango (62 Servings,
+              280g) | Trustified Certified Creatine</p>
+            <div class="price-cart-row">
+  <p class="price">₹949</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/Muscle%20blaze/unflavoured.webp" alt="">
+          <div class="card-body">
+            <h5 class="card-title">MB 100g<br>Unflavoured</h5>
+            <p class="card-text">MuscleBlaze Micronized Creatine Monohydrate Powder, Unflavoured (33 Servings, 100g) | Trustified Certified Creatine</p>
+            <div class="price-cart-row">
+  <p class="price">₹1099</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHEY PROTEIN -->
+  <section id="whey">
+    <h2 class="section-title">Whey Protein</h2>
+    <div class="container mb-5">
+      <h3>MuscleBlaze</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/MuscleBlaze/Unflavoured.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze 1kg<br>Unflavoured</h5>
+            <p class="card-text">MuscleBlaze Raw Whey Protein Concentrate (Unflavoured, 1kg / 2.2lbs) | Light & Clean Protein |
+              25g Protein Per Scoop | Easy to Digest | Clinically Tested 50% Higher Protein Absorption</p>
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/MuscleBlaze/Rich%20Chocolate%20.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze 1kg<br> Rich Chocolate</h5>
+            <p class="card-text">MuscleBlaze Biozyme Performance Whey Protein Powder, Rich Chocolate (1kg / 2.2lbs) |
+              25g Protein Per Scoop | Clinically Tested 50% Higher Protein Absorption</p>
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/MuscleBlaze/French%20Vanilla%20Creme.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze 1kg <br>French Vanilla Creme<br></h5>
+            <p class="card-text">MuscleBlaze Biozyme Performance Whey Protein Powder, French Vanilla Creme (1kg /
+              2.2lbs) | 25g Protein Per Scoop | Clinically Tested 50% Higher Protein Absorption</p>
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/MuscleBlaze/Butter%20Cookie.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze 2kg<br>Butter Cookie</h5>
+            <p class="card-text">MuscleBlaze Biozyme Performance Whey Protein Powder, Butter Cookie (2kg / 4.4lbs) | 25g
+              Protein Per Scoop | Clinically Tested 50% Higher Protein Absorption</p>
+            <div class="price-cart-row">
+  <p class="price">₹2599</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>Explosive Whey</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/EXPLOSIVE%20WHEY/Mango%20Candy.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">Explosive Whey 1Kg<br> Mango Candy</h5>
+            <p class="card-text">Explosive Whey Athlete Series 100% Isolate Whey Protein | Trusted by M.S. Dhoni & Kedar
+              Jadhav | Informed Sport Certified | Digestive Enzymes for Higher Absorption |1Kg - 26g Protein - Mango
+              Candy.</p>
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/EXPLOSIVE%20WHEY/Coffee.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">Explosive Whey 1Kg<br> Coffee</h5>
+            <p class="card-text">Explosive Whey Athlete Series 100% Isolate Whey Protein | Trusted by M.S. Dhoni & Kedar
+              Jadhav | Informed Sport Certified | Digestive Enzymes for Higher Absorption |1Kg - 26g Protein - Coffee
+            </p>
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/EXPLOSIVE%20WHEY/Dutch%20Cocoa-Butter.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">Explosive Whey 1Kg<br>Dutch Cocoa-Butter</h5>
+            <p class="card-text">Explosive Whey Athlete Series 100% Isolate Whey Protein | Trusted by M.S. Dhoni & Kedar
+              Jadhav | Informed Sport Certified | Digestive Enzymes for Higher Absorption |1Kg - 26g Protein - Dutch
+              Cocoa-Butter</p>
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/EXPLOSIVE%20WHEY/Chocolate%20Mint.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">Explosive Whey 1Kg<br>Chocolate Mint</h5>
+            <p class="card-text">Explosive Whey Athlete Series 100% Isolate Whey Protein | Trusted by M.S. Dhoni & Kedar
+              Jadhav | Informed Sport Certified | Digestive Enzymes for Higher Absorption |1Kg - 26g Protein - Chocolate
+              Mint.</p>
+            <div class="price-cart-row">
+  <p class="price">₹2699</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-WORKOUT -->
+  <section id="preworkout">
+    <h2 class="section-title">Pre-Workout</h2>
+    <div class="container mb-5">
+      <h3>MuscleBlaze</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/Muscle%20Blaze/Fruit%20Punch.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Pre Workout 200 Xtreme<br>Fruit Punch</h5>
+            <p class="card-text">MuscleBlaze Pre Workout 200 Xtreme (Fruit Punch, 15 Servings, 100g) | 200mg Caffeine,
+              200mg Theanine, 2000mg Beta Alanine, 3000mg Citrulline</p>
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/Muscle%20Blaze/Berry%20Lime.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Pre Workout Crea-Xtreme <br>Berry Lime</h5>
+            <p class="card-text">MuscleBlaze Pre Workout Crea-Xtreme (Berry Lime, 200g, 20 Servings) | 3000 mg Creatine
+              Monohydrate, 200mg Caffeine, 200mg Theanine, 2000mg Beta Alanine.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/Muscle%20Blaze/Berry%20Bolt.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Pre Workout 200 Xtreme <br>Berry Bolt</h5>
+            <p class="card-text">MuscleBlaze Pre Workout 200 Xtreme (Berry Bolt, 60 Servings, 200g) | 200mg Caffeine,
+              200mg Theanine, 2000mg Beta Alanine, 3000mg Citrulline</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/Muscle%20Blaze/Tangy%20Orange.jpeg"
+            alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Pre Workout 200 Xtreme<br>Tangy Orange</h5>
+            <p class="card-text">MuscleBlaze Pre Workout 200 Xtreme (Tangy Orange, 15 Servings, 100g) | 200mg Caffeine,
+              200mg Theanine, 2000mg Beta Alanine, 3000mg Citrulline.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2599</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>GNC</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/GNC/Lemon.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">GNC Pro Performance<br>Lemon</h5>
+            <p class="card-text">GNC Pro Performance Pre-Workout | 360 gm | 30 Servings | Boosts Energy & Endurance |
+              Improves Focus | Revs Up Recovery | 1.5g L-Arginine | 3.5g Beta-Alanine | 0.2g Caffeine | Lemon.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/GNC/Fruit%20Punch.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">GNC Pro Performance<br>Fruit Punch</h5>
+            <p class="card-text">GNC Pro Performance Pre-Workout | 360 gm | 30 Servings | Boosts Energy & Endurance |
+              Improves Focus | Revs Up Recovery | 1.5g L-Arginine | 3.5g Beta-Alanine | 0.2g Caffeine | Fruit Punch.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/GNC/Blue%20Raspberry.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">GNC Pro Performance<br>Blue Raspberry</h5>
+            <p class="card-text">GNC Pro Performance Pre-Workout | 360 gm | 30 Servings | Boosts Energy & Endurance |
+              Improves Focus | Revs Up Recovery | 1.5g L-Arginine | 3.5g Beta-Alanine | 0.2g Caffeine | Blue Raspberry.
+            </p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/GNC/Blood%20Orange.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">GNC Pro Performance<br>Blood Orange</h5>
+            <p class="card-text">GNC Pro Performance Pre-Workout | 360 gm | 30 Servings | Boosts Energy & Endurance |
+              Improves Focus | Revs Up Recovery | 1.5g L-Arginine | 3.5g Beta-Alanine | 0.2g Caffeine | Blood Orange.
+            </p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2699</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- OMEGA-3 -->
+  <section id="omega3">
+    <h2 class="section-title">Omega-3</h2>
+    <div class="container mb-5">
+      <h3>MuscleBlaze</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/MuscleBlaze/60.1.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Omega 3 Fish Oil <br>(60 Capsules)</h5>
+            <p class="card-text">MuscleBlaze Omega 3 Fish Oil (60 Capsules) | Trustified Certified for Accuracy & Purity
+              | 1000mg Omega 3 with 180mg EPA & 120mg DHA.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/MuscleBlaze/60.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Omega 3 Fish Oil Gold <br>(60 Capsules)</h5>
+            <p class="card-text">MuscleBlaze Omega 3 Fish Oil Gold (60 Capsules) | 1300mg Omega 3 with 500mg EPA & 400mg
+              DHA | 3x Triple Strength Formula | No Fishy Aftertaste</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/MuscleBlaze/90.webp" alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Omega 3 Fish Oil<br>(90 Capsules)</h5>
+            <p class="card-text">MuscleBlaze Omega 3 Fish Oil (90 Capsules) | Trustified Certified for Accuracy & Purity
+              | 1000mg Omega 3 with 180mg EPA & 120mg DHA.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2499</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/MuscleBlaze/90.1.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">MuscleBlaze Omega 3 Fish Oil Gold<br>(90 Capsules)</h5>
+            <p class="card-text">MuscleBlaze Omega 3 Fish Oil Gold (90 Capsules) | 1300mg Omega 3 with 500mg EPA & 400mg
+              DHA | 3x Triple Strength Formula | No Fishy Aftertaste.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2599</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>YouWeFit</h3>
+      <div class="scroll-container">
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/YouWeFit/30.1x.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">YouWeFit Fish Oil 1X<br>(30 Capsules)</h5>
+            <p class="card-text">YouWeFit Omega-3 Fish Oil (30 Capsules) | 1000mg Daily Strength Fish Oil Capsules
+              (180mg EPA & 120mg DHA) | No Fishy Burps | For Heart, Skin & Brain Health.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/YouWeFit/30.3x.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">YouWeFit Fish Oil 3X<br>(30 Capsules)</h5>
+            <p class="card-text">YouWeFit Omega-3 Fish Oil (30 Capsules) | 1250mg Triple Strength Fish Oil Softgel
+              Capsules (540mg EPA & 360mg DHA) | No Fishy Burps | For Joint & Heart Health, 80 grams.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/YouWeFit/601x.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">YouWeFit Fish Oil 1X<br>(60 Capsules)</h5>
+            <p class="card-text">YouWeFit Omega-3 Fish Oil (60 Capsules) | 1000mg Daily Strength Fish Oil Capsules
+              (180mg EPA & 120mg DHA) | No Fishy Burps | For Heart, Skin & Brain Health.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2399</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/YouWeFit/603x.jpeg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">YouWeFit Fish Oil 3X<br>(60 Capsules)</h5>
+            <p class="card-text">YouWeFit Omega-3 Fish Oil (60 Capsules) | 1250mg Triple Strength Fish Oil Softgel
+              Capsules (540mg EPA & 360mg DHA) | No Fishy Burps | For Joint & Heart Health, 110 grams.</p>
+
+            <div class="price-cart-row">
+  <p class="price">₹2699</p>
+  <button class="btn btn-cart">Add to Cart</button>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ======= start Chatbot Widget ======= -->
+  <div id="gymx-chat-btn" title="Chat with GymX">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" />
+    </svg>
+  </div>
+
+  <div id="gymx-chat-window" role="dialog" aria-label="GymX Chatbot">
+    <div id="gymx-chat-header">
+      GymX Assistant
+      <button aria-label="Close Chat">&times;</button>
+    </div>
+    <div id="gymx-chat-messages" aria-live="polite" aria-atomic="false"></div>
+    <form id="gymx-chat-form" autocomplete="off" aria-label="Send message to GymX chatbot">
+      <div id="gymx-chat-input-area">
+        <input id="gymx-chat-input" type="text" placeholder="Ask me about GymX..." aria-required="true" />
+        <button type="submit" id="gymx-chat-send-btn" aria-label="Send">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" stroke="currentColor" viewBox="0 0 24 24">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- ======= Chatbot Widget End ======= -->
+  <!-- ======= start Chatbot Widget  ======= -->
+  <script>
+    (() => {
+      const chatBtn = document.getElementById('gymx-chat-btn');
+      const chatWindow = document.getElementById('gymx-chat-window');
+      const closeBtn = chatWindow.querySelector('#gymx-chat-header button');
+      const messagesContainer = document.getElementById('gymx-chat-messages');
+      const chatForm = document.getElementById('gymx-chat-form');
+      const chatInput = document.getElementById('gymx-chat-input');
+
+      // Toggle chat window visibility
+      chatBtn.addEventListener('click', () => {
+        if (chatWindow.style.display === 'flex') {
+          chatWindow.style.display = 'none';
+        } else {
+          chatWindow.style.display = 'flex';
+          chatInput.focus();
+        }
+      });
+
+      closeBtn.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
+      });
+
+      // Scroll messages container to bottom
+      function scrollMessagesToBottom() {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+
+      // Predefined FAQ answers based on keyword matching
+      function getBotResponse(userText) {
+        const text = userText.toLowerCase();
+
+        if (!text.trim()) return "Please ask a question about GymX.";
+
+        if (text.includes('supplement') || text.includes('protein') || text.includes('creatine') || text.includes('omega')) {
+          return "We offer high-quality supplements like Whey Protein, Creatine, Pre-Workout, and Omega-3. Visit our Supplements section for details.";
+        }
+
+        if (text.includes('bmi')) {
+          return "Our BMI calculator helps you track your body mass index easily. You can find it under the 'BMI Calculator' menu.";
+        }
+
+        if (text.includes('contact') || text.includes('email') || text.includes('phone')) {
+          return "You can contact us at office@gymx.com or call us at +1 234 567 8900. We're here to help!";
+        }
+
+        if (text.includes('services') || text.includes('training') || text.includes('workout')) {
+          return "GymX offers personalized workout plans, training sessions, and nutritional advice to help you reach your fitness goals.";
+        }
+
+        if (text.includes('hours') || text.includes('time')) {
+          return "Our gym is open Monday to Saturday, 6 AM to 10 PM.";
+        }
+
+        if (text.includes('location') || text.includes('address')) {
+          return "We are located at 123 Fitness Ave, Wellness City. Drop by anytime!";
+        }
+
+        if (text.includes('hello') || text.includes('hi') || text.includes('hey')) {
+          return "Hello! How can I assist you with GymX today?";
+        }
+
+        return "Sorry, I didn't understand that. You can ask me about GymX supplements, services, BMI calculator, or contact info.";
+      }
+
+      // Add message bubble (user or bot)
+      function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('gymx-chat-message', sender);
+        msgDiv.textContent = text;
+        messagesContainer.appendChild(msgDiv);
+        scrollMessagesToBottom();
+      }
+
+      // Handle user message submission
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userText = chatInput.value.trim();
+        if (!userText) return;
+
+        addMessage(userText, 'user');
+        chatInput.value = '';
+
+        setTimeout(() => {
+          const botReply = getBotResponse(userText);
+          addMessage(botReply, 'bot');
+        }, 600);
+      });
+    })();
+  </script>
+  <!-- ======= Chatbot Widget End ======= -->
+</body>
+
+</html>

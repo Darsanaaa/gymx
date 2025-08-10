@@ -1,0 +1,610 @@
+*group-classes.html*
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Fitness Classes | GymX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<style>
+/* Base Reset & Body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+  scroll-behavior: smooth;
+  margin: 0;
+  /* FLEXIBILITY: Added padding to prevent content from hiding under the fixed navbar */
+  padding-top: 70px; 
+}
+
+a {
+  color: #00ffea;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00ffea;
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+  transition: 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #00ffea !important;
+  background-color: #212529;
+  border-radius: 4px;
+}
+.navbar-brand {
+  font-size: 1.75rem;
+  color: #00ffea !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #111;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* FLEXIBILITY: Added padding for better spacing on all screens */
+  padding: 3rem 1rem;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section h1 {
+  animation: fadeSlideUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-section p.lead {
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+
+/* Typography */
+h1, h2, h3, .text-info {
+  color: #00ffea;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #333;
+  background-color: #000;
+  padding: 20px;
+  color: white;
+}
+
+/* Images */
+img {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.15);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* Card & Section Enhancements */
+.card {
+  background-color: #1a1a1a;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.08);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.bg-dark {
+  background-color: #1e1e1e !important;
+}
+
+.shadow {
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.1) !important;
+}
+
+.rounded {
+  border-radius: 12px !important;
+}
+
+.testimonial-box {
+  background-color: #1c1c1c;
+  padding: 1.5rem;
+  border-left: 4px solid #00ffea;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+/* CTA Section */
+.btn-info {
+  background-color: #00ffea;
+  border: none;
+  color: #121212;
+  font-weight: bold;
+}
+
+.btn-info:hover {
+  background-color: #00e6d2;
+  color: #000;
+}
+
+/* Scoped styles for the carousel section */
+.gymx-tips-section {
+    --primary-dark: #0e0e0e;
+    --card-dark: #1a1a1a;
+    --neon-aqua: #00ffea;
+    --text-light: #f0f0f0;
+    --shadow-color: rgba(0, 255, 234, 0.3);
+    
+    background-color: #121212;
+    font-family: 'Oswald', sans-serif;
+    padding: 50px 0;
+    overflow: hidden;
+}
+
+.gymx-tips-section .tips-carousel-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gymx-tips-section .carousel-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-left: 4%;
+    margin-bottom: 20px;
+}
+
+.gymx-tips-section .carousel-title span {
+    color: var(--neon-aqua);
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+
+.gymx-tips-section .tips-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.gymx-tips-section .tips-carousel {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    transform: translateX(0);
+}
+
+.gymx-tips-section .tip-card {
+    flex: 0 0 280px;
+    aspect-ratio: 16 / 10;
+    background-color: var(--card-dark);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.gymx-tips-section .tip-card.is-active,
+.gymx-tips-section .tip-card:hover {
+    transform: scale(1.08) !important;
+    z-index: 10;
+    border-color: var(--neon-aqua);
+    box-shadow: 0 0 25px var(--shadow-color);
+}
+
+.gymx-tips-section .card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gymx-tips-section .card-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--neon-aqua);
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--shadow-color);
+}
+
+.gymx-tips-section .card-main-content {
+     align-self: flex-end;
+     width: 100%;
+}
+
+.gymx-tips-section .tip-card h4 {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.gymx-tips-section .tip-card p {
+    font-size: 1rem;
+    color: #b0b0b0;
+    line-height: 1.5;
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease, margin-top 0.5s ease;
+}
+
+.gymx-tips-section .tip-card.is-active p,
+.gymx-tips-section .tip-card:hover p {
+    opacity: 1;
+    max-height: 100px;
+    margin-top: 10px;
+}
+
+/*
+  ==============================================
+  FLEXIBILITY & RESPONSIVENESS STYLES
+  ==============================================
+*/
+@media (max-width: 991.98px) {
+  /* -- Tablet and smaller devices -- */
+  .hero-section {
+    min-height: 50vh;
+  }
+  .hero-section h1.display-4 {
+    font-size: 3rem; /* Reduce heading size */
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* -- Mobile devices -- */
+  body {
+      padding-top: 60px; /* Adjust for smaller navbar */
+  }
+  .hero-section {
+    min-height: 40vh;
+    padding: 2rem 1rem;
+  }
+  .hero-section h1.display-4 {
+    font-size: 2.5rem; /* Further reduce heading size */
+  }
+  .hero-section .lead {
+    font-size: 1.1rem;
+  }
+  section.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .text-center-mobile {
+    text-align: center !important;
+  }
+  /* Center align overview text on mobile */
+  .overview-text {
+    text-align: center;
+  }
+  .overview-text ul {
+    display: inline-block;
+    text-align: left;
+  }
+  .gymx-tips-section .tip-card { 
+    flex-basis: 240px; 
+  }
+}
+
+@media (max-width: 480px) {
+  /* -- Extra small devices -- */
+  .gymx-tips-section .carousel-title { 
+    font-size: 1.5rem; 
+    margin-left: 5%; 
+  }
+  .gymx-tips-section .tips-carousel-wrapper { 
+    margin: 0 5%; 
+  }
+  .gymx-tips-section .tip-card { 
+    flex-basis: 200px; 
+  }
+  .gymx-tips-section .tip-card h4 { 
+    font-size: 1.25rem; 
+  }
+}
+</style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-info font-weight-bold" href="index.html">GymX</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="personal-training.html">Personal Training</a></li>
+          <li class="nav-item"><a class="nav-link active" href="group-classes.html">Group Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-training.html">Virtual Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="premium-facilities.html">Facilities</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section" style="background-image: url('https://darsana.sirv.com/Project%20GYM/service%20cards/Personal%20Training/pixlr-image-generator-68730e97637869891df223eb.png');">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold">Group Fitness Classes</h1>
+      <p class="lead">Energy, motivation, and fun — together.</p>
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4">
+        <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Group%20Fitness%20Classes/pixlr-image-generator-6873166e7b6659b0ec3f8fad.png" alt="Group Fitness Class" class="img-fluid">
+      </div>
+      <!-- FLEXIBILITY: Added a class to target this text block on mobile -->
+      <div class="col-md-6 overview-text">
+        <h3>Why Group Training Works</h3>
+        <p>Group classes are a great way to stay accountable, push harder, and make fitness more fun. Led by certified instructors, each class is designed to help you burn calories, build strength, and stay motivated — all while building community.</p>
+        <ul>
+          <li>Daily schedules for all fitness levels</li>
+          <li>Cardio, strength, HIIT, yoga, and more</li>
+          <li>Motivating group environment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Class Types -->
+  <section class="container py-5">
+    <h3 class="text-center mb-5">Popular Class Types</h3>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Group%20Fitness%20Classes/pixlr-image-generator-687316f93c2d2a0a060bd0cd.png" class="card-img-top img-fluid" alt="Yoga">
+          <div class="card-body">
+            <h5 class="card-title text-info">Power Yoga</h5>
+            <p class="card-text">Build flexibility, reduce stress, and improve posture with our expert-led yoga sessions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Group%20Fitness%20Classes/pixlr-image-generator-687317660be3956e44184aa5.png" class="card-img-top img-fluid" alt="HIIT Class">
+          <div class="card-body">
+            <h5 class="card-title text-info">HIIT Blast</h5>
+            <p class="card-text">High-Intensity Interval Training that burns fat and boosts metabolism.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Group%20Fitness%20Classes/pixlr-image-generator-687317b430f7eedad47156b0.png" class="card-img-top img-fluid" alt="Zumba">
+          <div class="card-body">
+            <h5 class="card-title text-info">Zumba Dance</h5>
+            <p class="card-text">A fun and energetic full-body cardio dance party led by certified instructors.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gymx-tips-section">
+    <div class="tips-carousel-container">
+        <h3 class="carousel-title">PRO <span>TIPS</span></h3>
+        <div class="tips-carousel-wrapper">
+            <div class="tips-carousel" id="gymx-tips-carousel">
+                <!-- Cards are populated by JS -->
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="container py-5">
+    <h3 class="text-center mb-4">What Members Are Saying</h3>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="bg-dark p-4 rounded shadow">
+          <p class="mb-1">“I’ve made new friends and love the energy of each class!”</p>
+          <small class="text-info">– Sneha P.</small>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="bg-dark p-4 rounded shadow">
+          <p class="mb-1">“I used to hate working out — now I never miss a class.”</p>
+          <small class="text-info">– Rohan D.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="container text-center py-5">
+    <h2 class="mb-3 text-info">Join the Movement</h2>
+    <p class="lead">Explore our schedule and jump into your first class — on us!</p>
+    <a href="contact.html" class="btn btn-info btn-lg mt-3">Try a Free Class</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    &copy; 2025 GymX. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ======= start Chatbot Widget ======= -->
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6872daa6380ab07f195c0462' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+<!-- ======= Chatbot Widget End ======= -->
+ <!-- ======= Tip Widget start ======= -->
+    <script>
+        (() => {
+            // Self-invoking function to avoid global scope pollution
+            const tipsData = [
+                { category: 'TRAINING', title: 'Master Form First', details: 'Proper form is more important than heavy weights. Focus on quality reps to prevent injury and maximize gains.' },
+                { category: 'NUTRITION', title: 'Hydration is Key', details: 'Drink water before, during, and after workouts. Dehydration can significantly decrease performance.' },
+                { category: 'MINDSET', title: 'Be Consistent', details: 'Results come from long-term dedication. Stay consistent even on days you lack motivation.' },
+                { category: 'TRAINING', title: 'Embrace Compounds', details: 'Exercises like squats and deadlifts engage multiple muscle groups for efficient, full-body strength.' },
+                { category: 'RECOVERY', title: 'Rest to Grow', details: 'Muscles are built during rest, not in the gym. Ensure you get 7-9 hours of quality sleep for optimal recovery.' },
+                { category: 'NUTRITION', title: 'Fuel Your Body', details: 'Nutrition is 80% of the equation. Prioritize lean protein, complex carbs, and healthy fats.' },
+                { category: 'TRAINING', title: 'Progressive Overload', details: 'To keep getting stronger, you must consistently increase the demand on your muscles over time.' },
+                { category: 'RECOVERY', title: 'Active Recovery', details: 'On rest days, light activities like walking or stretching can improve blood flow and speed up recovery.' },
+                { category: 'MINDSET', title: 'Set Realistic Goals', details: 'Set small, achievable goals to build momentum and stay motivated on your fitness journey.' },
+                { category: 'NUTRITION', title: 'Meal Prep Saves Time', details: 'Prepare your meals in advance to ensure you always have healthy options ready to go.' }
+            ];
+
+            const carousel = document.getElementById('gymx-tips-carousel');
+            // Ensure the script only runs if the carousel element exists on the page
+            if (!carousel) return;
+
+            const wrapper = carousel.parentElement;
+            let currentIndex = 0;
+            let autoScrollInterval;
+            let isTransitioning = false;
+
+            const populateCarousel = () => {
+                tipsData.forEach(tip => {
+                    const card = document.createElement('div');
+                    card.className = 'tip-card';
+                    card.innerHTML = `
+                        <div class="card-content">
+                            <span class="card-category">${tip.category}</span>
+                            <div class="card-main-content">
+                                <h4>${tip.title}</h4>
+                                <p>${tip.details}</p>
+                            </div>
+                        </div>
+                    `;
+                    carousel.appendChild(card);
+                });
+            };
+
+            const setupInfiniteScroll = () => {
+                const cards = Array.from(carousel.children);
+                const cardsToClone = cards.length; 
+
+                for (let i = cardsToClone - 1; i >= 0; i--) {
+                    carousel.prepend(cards[i].cloneNode(true));
+                }
+
+                for (let i = 0; i < cardsToClone; i++) {
+                    carousel.appendChild(cards[i].cloneNode(true));
+                }
+            };
+            
+            const updateCarousel = (withTransition = true) => {
+                isTransitioning = withTransition;
+                const cardWidth = carousel.querySelector('.tip-card').offsetWidth;
+                const gap = 20;
+                const totalShift = (cardWidth + gap) * (currentIndex + tipsData.length);
+                
+                carousel.style.transition = withTransition ? 'transform 0.5s ease-in-out' : 'none';
+                carousel.style.transform = `translateX(-${totalShift}px)`;
+
+                const allCards = carousel.querySelectorAll('.tip-card');
+                allCards.forEach(card => card.classList.remove('is-active'));
+                if(allCards[currentIndex + tipsData.length]){
+                    allCards[currentIndex + tipsData.length].classList.add('is-active');
+                }
+            };
+            
+            const handleLoop = () => {
+                if (isTransitioning) {
+                    if (currentIndex >= tipsData.length) {
+                        currentIndex = 0;
+                        updateCarousel(false);
+                    } else if (currentIndex < 0) {
+                        currentIndex = tipsData.length - 1;
+                        updateCarousel(false);
+                    }
+                }
+            };
+
+            const moveToNext = () => {
+                currentIndex++;
+                updateCarousel();
+            };
+
+            const startAutoScroll = () => {
+                stopAutoScroll();
+                autoScrollInterval = setInterval(moveToNext, 3500);
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+
+            carousel.addEventListener('transitionend', handleLoop);
+            wrapper.addEventListener('mouseenter', stopAutoScroll);
+            wrapper.addEventListener('mouseleave', startAutoScroll);
+
+            // Initialize
+            populateCarousel();
+            setupInfiniteScroll();
+            updateCarousel(false);
+            startAutoScroll();
+        })();
+    </script>
+     <!-- ======= Tip Widget End ======= -->
+</body>
+</html>

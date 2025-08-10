@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <title>Virtual Training | GymX</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<style>
+/* Base Reset & Body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #00ffea;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00ffea;
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+  transition: 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #00ffea !important;
+  background-color: #212529;
+  border-radius: 4px;
+}
+.navbar-brand {
+  font-size: 1.75rem;
+  color: #00ffea !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #111;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🎯 Animated heading */
+.hero-section h1 {
+  animation: fadeSlideUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* 🎯 Animated subheading */
+.hero-section p.lead {
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* Typography */
+h1, h2, h3, .text-info {
+  color: #00ffea;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #333;
+  background-color: #000;
+  padding: 20px;
+  color: white;
+}
+
+/* Images */
+img {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.15);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* Card & Section Enhancements */
+.card {
+  background-color: #1a1a1a;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.08);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.bg-dark {
+  background-color: #1e1e1e !important;
+}
+
+.shadow {
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.1) !important;
+}
+
+.rounded {
+  border-radius: 12px !important;
+}
+
+.testimonial-box {
+  background-color: #1c1c1c;
+  padding: 1.5rem;
+  border-left: 4px solid #00ffea;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+/* CTA Section */
+.btn-info {
+  background-color: #00ffea;
+  border: none;
+  color: #121212;
+  font-weight: bold;
+}
+
+.btn-info:hover {
+  background-color: #00e6d2;
+  color: #000;
+}
+
+/* Responsive Text Centering */
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center !important;
+  }
+}
+
+/* Scoped Timer Section Styling */
+.timer-section {
+  --primary-dark: #0e0e0e;
+  --neon-aqua: #00ffea;
+  --text-light: #f0f0f0;
+  --shadow-color: rgba(0, 255, 234, 0.5);
+  --shadow-color-hold: rgba(255, 255, 255, 0.7);
+  --breathing-cycle-duration: 19s;
+  font-family: 'Oswald', sans-serif;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-transform: uppercase;
+  background-image: url('https://darsana.sirv.com/Project%20GYM/service%20cards/Virtual%20training/ChatGPT%20Image%20Jul%2019%2C%202025%2C%2012_49_52%20PM.png');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover; /* optional: adjusts the image to cover the element */
+}
+
+.timer-section * {
+  box-sizing: border-box;
+}
+
+.timer-section .app-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+}
+
+.timer-section .title h1 {
+  font-size: 2.5rem;
+  color: var(--neon-aqua);
+  text-shadow: 0 0 10px var(--neon-aqua), 0 0 20px var(--shadow-color);
+  margin-bottom: 0.5rem;
+}
+
+.timer-section .subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.timer-section .timer-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-section .circle-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.timer-section .circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #004d40, var(--primary-dark) 70%);
+  transform: scale(0.4);
+  transition: all 0.5s;
+}
+
+.timer-section .circle.breathing {
+  animation: breathe var(--breathing-cycle-duration) infinite ease-in-out;
+}
+
+.timer-section .circle.hold {
+  box-shadow: 0 0 20px var(--shadow-color-hold);
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.4); }
+  21% { transform: scale(1); }
+  58% { transform: scale(1); }
+  95% { transform: scale(0.4); }
+}
+
+.timer-section .circle-guide-text {
+  font-size: 1.8rem;
+  z-index: 2;
+  color: var(--neon-aqua);
+  text-shadow: 0 0 8px var(--shadow-color);
+  position: absolute;
+  transition: opacity 0.5s;
+}
+
+.timer-section .timer-display {
+  position: absolute;
+  bottom: 20px;
+  font-size: 2.5rem;
+  z-index: 2;
+  font-weight: 700;
+}
+
+.timer-section .presets {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.timer-section .custom-time-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.timer-section #custom-time-input {
+  background: #1a1a1a;
+  border: 2px solid var(--neon-aqua);
+  color: var(--text-light);
+  border-radius: 12px;
+  padding: 10px;
+  width: 80px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.timer-section #custom-time-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+/* Hide number input arrows */
+.timer-section input[type=number]::-webkit-inner-spin-button,
+.timer-section input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.timer-section input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.timer-section .preset-btn,
+.timer-section .control-btn {
+  font-family: 'Oswald', sans-serif;
+  background: transparent;
+  border: 2px solid var(--neon-aqua);
+  color: var(--neon-aqua);
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s;
+  box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.timer-section .preset-btn:hover,
+.timer-section .control-btn:hover {
+  background-color: var(--neon-aqua);
+  color: var(--primary-dark);
+  box-shadow: 0 0 15px var(--shadow-color), 0 0 25px var(--shadow-color);
+}
+
+.timer-section .preset-btn.active {
+  background-color: var(--neon-aqua);
+  color: var(--primary-dark);
+}
+
+.timer-section .preset-btn[data-time="custom"].active {
+  background-color: #1a1a1a;
+  color: var(--neon-aqua);
+}
+
+.timer-section .controls {
+  display: flex;
+  gap: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .timer-section .title h1 { font-size: 2rem; }
+  .timer-section .subtitle { font-size: 0.9rem; }
+  .timer-section .circle-container { width: 250px; height: 250px; }
+  .timer-section .circle-guide-text { font-size: 1.5rem; }
+  .timer-section .timer-display { font-size: 2rem; bottom: 10px; }
+  .timer-section .preset-btn,
+  .timer-section .control-btn { padding: 8px 16px; font-size: 0.9rem; }
+}
+
+ /* Scoped styles for the carousel section */
+        .gymx-tips-section {
+            --primary-dark: #0e0e0e;
+            --card-dark: #1a1a1a;
+            --neon-aqua: #00ffea;
+            --text-light: #f0f0f0;
+            --shadow-color: rgba(0, 255, 234, 0.3);
+            
+            background-color: #121212;
+            font-family: 'Oswald', sans-serif;
+            padding: 50px 0;
+            overflow: hidden;
+        }
+
+        .gymx-tips-section .tips-carousel-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gymx-tips-section .carousel-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-left: 4%;
+            margin-bottom: 20px;
+        }
+
+        .gymx-tips-section .carousel-title span {
+            color: var(--neon-aqua);
+            text-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        .gymx-tips-section .tips-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gymx-tips-section .tips-carousel {
+            display: flex;
+            gap: 20px;
+            padding: 10px 0;
+            transform: translateX(0);
+        }
+        
+        .gymx-tips-section .tip-card {
+            flex: 0 0 280px;
+            aspect-ratio: 16 / 10;
+            background-color: var(--card-dark);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+        }
+
+        .gymx-tips-section .tip-card.is-active,
+        .gymx-tips-section .tip-card:hover {
+            transform: scale(1.08) !important;
+            z-index: 10;
+            border-color: var(--neon-aqua);
+            box-shadow: 0 0 25px var(--shadow-color);
+        }
+
+        .gymx-tips-section .card-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .gymx-tips-section .card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--neon-aqua);
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--shadow-color);
+        }
+
+        .gymx-tips-section .card-main-content {
+             align-self: flex-end;
+             width: 100%;
+        }
+
+        .gymx-tips-section .tip-card h4 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .gymx-tips-section .tip-card p {
+            font-size: 1rem;
+            color: #b0b0b0;
+            line-height: 1.5;
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease, margin-top 0.5s ease;
+        }
+
+        .gymx-tips-section .tip-card.is-active p,
+        .gymx-tips-section .tip-card:hover p {
+            opacity: 1;
+            max-height: 100px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .gymx-tips-section .tip-card { flex-basis: 240px; }
+        }
+
+        @media (max-width: 480px) {
+            .gymx-tips-section .carousel-title { font-size: 1.5rem; margin-left: 5%; }
+            .gymx-tips-section .tips-carousel-wrapper { margin: 0 5%; }
+            .gymx-tips-section .tip-card { flex-basis: 200px; }
+            .gymx-tips-section .tip-card h4 { font-size: 1.25rem; }
+        }
+</style>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-info font-weight-bold" href="index.html">GymX</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="personal-training.html">Personal Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="group-classes.html">Group Classes</a></li>
+          <li class="nav-item"><a class="nav-link active" href="virtual-training.html">Virtual Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="premium-facilities.html">Facilities</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section" style="background-image: url('https://darsana.sirv.com/Project%20GYM/service%20cards/Personal%20Training/pixlr-image-generator-68730e97637869891df223eb.png');">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold">Virtual Training</h1>
+      <p class="lead">Work out anywhere, anytime — your fitness, your schedule.</p>
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4">
+        <img src="https://people.com/thmb/iBEkp57V_WA3MYbFXoHfeX1xsyk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x0:751x2)/zoom-workouts39-303f650140634d12b5a22093bec5fa9d.jpg" alt="Virtual Training" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h3>Train Without Boundaries</h3>
+        <p>Our virtual training programs bring GymX expertise directly to your screen. Whether you're traveling, working from home, or just want the freedom to work out on your terms — we’ve got you covered.</p>
+        <ul>
+          <li>Live sessions with expert trainers</li>
+          <li>On-demand workouts 24/7</li>
+          <li>No equipment? No problem — we tailor to what you have</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Options -->
+  <section class="container py-5">
+    <h3 class="text-center mb-5">Training Options</h3>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.71zfApHCMGNpv33VQxyUewHaLH?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top img-fluid" alt="Live Session">
+          <div class="card-body">
+            <h5 class="card-title text-info">Live Zoom Classes</h5>
+            <p class="card-text">Join real-time sessions with trainers and interact with your fitness community.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/WhatsApp%20Image%202025-08-10%20at%209.37.11%20PM.jpeg" class="card-img-top img-fluid" alt="On-demand Workouts">
+          <div class="card-body">
+            <h5 class="card-title text-info">On-Demand Library</h5>
+            <p class="card-text">Access a curated video library of workouts anytime, from HIIT to mobility drills.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/WhatsApp%20Image%202025-08-10%20at%2010.05.53%20PM.jpeg" class="card-img-top img-fluid" alt="App Support">
+          <div class="card-body">
+            <h5 class="card-title text-info">Progress Tracking</h5>
+            <p class="card-text">Stay on track with integrated progress tracking via our GymX companion app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="timer-section">
+    <div class="app-container">
+        <header class="title">
+            <h1>Timer</h1>
+            <h2 class="subtitle">4-7-8 Breathing Guide</h2>
+        </header>
+
+        <main class="timer-container">
+            <div class="circle-container">
+                <div class="circle" id="breathing-circle"></div>
+                <div class="circle-guide-text" id="guide-text">Ready?</div>
+                <div class="timer-display" id="timer-display">0:00</div>
+            </div>
+
+            <div class="presets">
+                <button class="preset-btn" data-time="30">30s</button>
+                <button class="preset-btn active" data-time="60">1m</button>
+                <button class="preset-btn" data-time="300">5m</button>
+                <div class="custom-time-container">
+                    <input type="number" id="custom-time-input" placeholder="MIN" min="1">
+                    <button class="preset-btn" id="set-custom-btn">Set</button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn" id="start-btn">Start</button>
+                <button class="control-btn" id="pause-btn" style="display: none;">Pause</button>
+                <button class="control-btn" id="reset-btn">Reset</button>
+            </div>
+        </main>
+    </div>
+</section>
+
+<section class="gymx-tips-section">
+ <div class="tips-carousel-container">
+        <h3 class="carousel-title">PRO <span>TIPS</span></h3>
+        <div class="tips-carousel-wrapper">
+            <div class="tips-carousel" id="gymx-tips-carousel">
+                </div>
+        </div>
+    </div>
+</section>
+  <!-- Testimonials -->
+  <section class="container py-5">
+    <h3 class="text-center mb-4">Hear From Our Virtual Members</h3>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="bg-dark p-4 rounded shadow">
+          <p class="mb-1">“I never thought online training could be this effective — I’m stronger than ever.”</p>
+          <small class="text-info">– Nikhil J.</small>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="bg-dark p-4 rounded shadow">
+          <p class="mb-1">“Fits perfectly with my remote work lifestyle. Totally worth it.”</p>
+          <small class="text-info">– Ria K.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="container text-center py-5">
+    <h2 class="mb-3 text-info">Train Anytime, Anywhere</h2>
+    <p class="lead">Get started with your first virtual class — no strings attached.</p>
+    <a href="contact.html" class="btn btn-info btn-lg mt-3">Start Virtual Training</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    &copy; 2025 GymX. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ======= start Chatbot Widget ======= -->
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6872daa6380ab07f195c0462' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+<!-- ======= Chatbot Widget End ======= -->
+<!-- ======= Timer Widget Start ======= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
+            const breathingCircle = document.getElementById('breathing-circle');
+            const guideText = document.getElementById('guide-text');
+            const timerDisplay = document.getElementById('timer-display');
+            const presetBtns = document.querySelectorAll('.preset-btn:not(#set-custom-btn)');
+            const customInput = document.getElementById('custom-time-input');
+            const setCustomBtn = document.getElementById('set-custom-btn');
+            const startBtn = document.getElementById('start-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const resetBtn = document.getElementById('reset-btn');
+
+            // Timer State
+            let totalTime = 60; // Default to 1 minute
+            let remainingTime = totalTime;
+            let timerInterval = null;
+            let guideManagement = {
+                timeout1: null,
+                timeout2: null,
+                timeout3: null,
+                interval: null
+            };
+            let isRunning = false;
+
+            // --- Utility Functions ---
+            const formatTime = (seconds) => {
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+            };
+
+            const updateDisplay = () => {
+                timerDisplay.textContent = formatTime(remainingTime);
+            };
+
+            // --- Guide Text & Animation Logic ---
+            const manageGuide = () => {
+                const runSequence = () => {
+                    guideText.textContent = 'Inhale';
+                    breathingCircle.classList.remove('hold');
+                    
+                    guideManagement.timeout1 = setTimeout(() => {
+                        guideText.textContent = 'Hold';
+                        breathingCircle.classList.add('hold');
+                    }, 4000); // Inhale duration
+
+                    guideManagement.timeout2 = setTimeout(() => {
+                        guideText.textContent = 'Exhale';
+                        breathingCircle.classList.remove('hold');
+                    }, 11000); // Inhale + Hold duration
+                };
+
+                runSequence(); // Initial run
+                guideManagement.interval = setInterval(runSequence, 19000); // Full cycle
+            };
+
+            const stopGuide = () => {
+                clearTimeout(guideManagement.timeout1);
+                clearTimeout(guideManagement.timeout2);
+                clearInterval(guideManagement.interval);
+                breathingCircle.classList.remove('hold');
+            };
+
+            // --- Timer Logic ---
+            const startTimer = () => {
+                if (isRunning || remainingTime <= 0) return;
+                isRunning = true;
+                
+                startBtn.style.display = 'none';
+                pauseBtn.style.display = 'inline-block';
+                breathingCircle.classList.add('breathing');
+                manageGuide();
+                
+                timerInterval = setInterval(() => {
+                    remainingTime--;
+                    updateDisplay();
+                    if (remainingTime <= 0) {
+                        resetTimer();
+                        guideText.textContent = 'Done!';
+                    }
+                }, 1000);
+            };
+
+            const pauseTimer = () => {
+                if (!isRunning) return;
+                isRunning = false;
+                
+                clearInterval(timerInterval);
+                stopGuide();
+                
+                pauseBtn.style.display = 'none';
+                startBtn.style.display = 'inline-block';
+                startBtn.textContent = 'Resume';
+                breathingCircle.classList.remove('breathing');
+            };
+
+            const resetTimer = () => {
+                isRunning = false;
+                clearInterval(timerInterval);
+                stopGuide();
+
+                remainingTime = totalTime;
+                updateDisplay();
+
+                startBtn.textContent = 'Start';
+                startBtn.style.display = 'inline-block';
+                pauseBtn.style.display = 'none';
+                breathingCircle.classList.remove('breathing');
+                guideText.textContent = 'Ready?';
+            };
+            
+            // --- Event Listeners ---
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (isRunning) return;
+                    
+                    presetBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    customInput.value = '';
+                    
+                    totalTime = parseInt(btn.dataset.time, 10);
+                    resetTimer();
+                });
+            });
+
+            const setCustomTime = () => {
+                if (isRunning) return;
+                const minutes = parseInt(customInput.value, 10);
+                if (minutes && minutes > 0) {
+                    presetBtns.forEach(b => b.classList.remove('active'));
+                    totalTime = minutes * 60;
+                    resetTimer();
+                }
+            };
+            
+            setCustomBtn.addEventListener('click', setCustomTime);
+            customInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    setCustomTime();
+                }
+            });
+
+            startBtn.addEventListener('click', startTimer);
+            pauseBtn.addEventListener('click', pauseTimer);
+            resetBtn.addEventListener('click', resetTimer);
+
+            // --- Initial Setup ---
+            updateDisplay();
+        });
+    </script>
+    <!-- ======= Timer Widget End ======= -->
+    <!-- ======= Tip Widget start ======= -->
+    <script>
+        (() => {
+            // Self-invoking function to avoid global scope pollution
+            const tipsData = [
+                { category: 'TRAINING', title: 'Master Form First', details: 'Proper form is more important than heavy weights. Focus on quality reps to prevent injury and maximize gains.' },
+                { category: 'NUTRITION', title: 'Hydration is Key', details: 'Drink water before, during, and after workouts. Dehydration can significantly decrease performance.' },
+                { category: 'MINDSET', title: 'Be Consistent', details: 'Results come from long-term dedication. Stay consistent even on days you lack motivation.' },
+                { category: 'TRAINING', title: 'Embrace Compounds', details: 'Exercises like squats and deadlifts engage multiple muscle groups for efficient, full-body strength.' },
+                { category: 'RECOVERY', title: 'Rest to Grow', details: 'Muscles are built during rest, not in the gym. Ensure you get 7-9 hours of quality sleep for optimal recovery.' },
+                { category: 'NUTRITION', title: 'Fuel Your Body', details: 'Nutrition is 80% of the equation. Prioritize lean protein, complex carbs, and healthy fats.' },
+                { category: 'TRAINING', title: 'Progressive Overload', details: 'To keep getting stronger, you must consistently increase the demand on your muscles over time.' },
+                { category: 'RECOVERY', title: 'Active Recovery', details: 'On rest days, light activities like walking or stretching can improve blood flow and speed up recovery.' },
+                { category: 'MINDSET', title: 'Set Realistic Goals', details: 'Set small, achievable goals to build momentum and stay motivated on your fitness journey.' },
+                { category: 'NUTRITION', title: 'Meal Prep Saves Time', details: 'Prepare your meals in advance to ensure you always have healthy options ready to go.' }
+            ];
+
+            const carousel = document.getElementById('gymx-tips-carousel');
+            // Ensure the script only runs if the carousel element exists on the page
+            if (!carousel) return;
+
+            const wrapper = carousel.parentElement;
+            let currentIndex = 0;
+            let autoScrollInterval;
+            let isTransitioning = false;
+
+            const populateCarousel = () => {
+                tipsData.forEach(tip => {
+                    const card = document.createElement('div');
+                    card.className = 'tip-card';
+                    card.innerHTML = `
+                        <div class="card-content">
+                            <span class="card-category">${tip.category}</span>
+                            <div class="card-main-content">
+                                <h4>${tip.title}</h4>
+                                <p>${tip.details}</p>
+                            </div>
+                        </div>
+                    `;
+                    carousel.appendChild(card);
+                });
+            };
+
+            const setupInfiniteScroll = () => {
+                const cards = Array.from(carousel.children);
+                const cardsToClone = cards.length; 
+
+                for (let i = cardsToClone - 1; i >= 0; i--) {
+                    carousel.prepend(cards[i].cloneNode(true));
+                }
+
+                for (let i = 0; i < cardsToClone; i++) {
+                    carousel.appendChild(cards[i].cloneNode(true));
+                }
+            };
+            
+            const updateCarousel = (withTransition = true) => {
+                isTransitioning = withTransition;
+                const cardWidth = carousel.querySelector('.tip-card').offsetWidth;
+                const gap = 20;
+                const totalShift = (cardWidth + gap) * (currentIndex + tipsData.length);
+                
+                carousel.style.transition = withTransition ? 'transform 0.5s ease-in-out' : 'none';
+                carousel.style.transform = `translateX(-${totalShift}px)`;
+
+                const allCards = carousel.querySelectorAll('.tip-card');
+                allCards.forEach(card => card.classList.remove('is-active'));
+                if(allCards[currentIndex + tipsData.length]){
+                    allCards[currentIndex + tipsData.length].classList.add('is-active');
+                }
+            };
+            
+            const handleLoop = () => {
+                if (isTransitioning) {
+                    if (currentIndex >= tipsData.length) {
+                        currentIndex = 0;
+                        updateCarousel(false);
+                    } else if (currentIndex < 0) {
+                        currentIndex = tipsData.length - 1;
+                        updateCarousel(false);
+                    }
+                }
+            };
+
+            const moveToNext = () => {
+                currentIndex++;
+                updateCarousel();
+            };
+
+            const startAutoScroll = () => {
+                stopAutoScroll();
+                autoScrollInterval = setInterval(moveToNext, 3500);
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+
+            carousel.addEventListener('transitionend', handleLoop);
+            wrapper.addEventListener('mouseenter', stopAutoScroll);
+            wrapper.addEventListener('mouseleave', startAutoScroll);
+
+            // Initialize
+            populateCarousel();
+            setupInfiniteScroll();
+            updateCarousel(false);
+            startAutoScroll();
+        })();
+    </script>
+     <!-- ======= Tip Widget End ======= -->
+</body>
+</html>

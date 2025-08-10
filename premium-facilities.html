@@ -1,0 +1,315 @@
+*premium-facilities.html*
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Facilities | GymX</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<style>
+/* Base Reset & Body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #00ffea;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00ffea;
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+  transition: 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #00ffea !important;
+  background-color: #212529;
+  border-radius: 4px;
+}
+.navbar-brand {
+  font-size: 1.75rem;
+  color: #00ffea !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #111;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* 🎯 Added animation keyframes */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🎯 Animated heading */
+.hero-section h1 {
+  animation: fadeSlideUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* 🎯 Animated subheading */
+.hero-section p.lead {
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+
+
+/* Typography */
+h1, h2, h3, .text-info {
+  color: #00ffea;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #333;
+  background-color: #000;
+  padding: 20px;
+  color: white;
+}
+
+/* Images */
+img {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.15);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* Card & Section Enhancements */
+.card {
+  background-color: #1a1a1a;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.08);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.bg-dark {
+  background-color: #1e1e1e !important;
+}
+
+.shadow {
+  box-shadow: 0 8px 20px rgba(0, 255, 234, 0.1) !important;
+}
+
+.rounded {
+  border-radius: 12px !important;
+}
+
+.testimonial-box {
+  background-color: #1c1c1c;
+  padding: 1.5rem;
+  border-left: 4px solid #00ffea;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+/* CTA Section */
+.btn-info {
+  background-color: #00ffea;
+  border: none;
+  color: #121212;
+  font-weight: bold;
+}
+
+.btn-info:hover {
+  background-color: #00e6d2;
+  color: #000;
+}
+
+/* Responsive Text Centering */
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center !important;
+  }
+}
+</style>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-info font-weight-bold" href="index.html">GymX</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="personal-training.html">Personal Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="group-classes.html">Group Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-training.html">Virtual Training</a></li>
+          <li class="nav-item"><a class="nav-link active" href="premium-facilities.html">Facilities</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section" style="background-image: url('https://darsana.sirv.com/Project%20GYM/service%20cards/Personal%20Training/pixlr-image-generator-68730e97637869891df223eb.png');">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold">Premium Facilities</h1>
+      <p class="lead">Train in style. Elevate your experience. </p>
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4">
+        <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Premium%20Facilities/pixlr-image-generator-68731c1d30f7eedad471a939.png" alt="Facilities" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h3>More Than Just a Gym</h3>
+        <p>At GymX, we’ve reimagined the fitness experience. Our premium facilities feature world-class equipment, elegant interiors, and smart spaces designed to inspire peak performance and comfort.</p>
+        <ul>
+          <li>State-of-the-art strength & cardio equipment</li>
+          <li>Recovery lounges & wellness zones</li>
+          <li>Luxury locker rooms with showers & saunas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility Highlights -->
+  <section class="container py-5">
+    <h3 class="text-center mb-5">Facility Highlights</h3>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Premium%20Facilities/pixlr-image-generator-68731dad8f0e3ef84e4341ac.png" class="card-img-top img-fluid" alt="Gym Floor">
+          <div class="card-body">
+            <h5 class="card-title text-info">Elite Gym Floor</h5>
+            <p class="card-text">Fully equipped with Hammer Strength, Technogym, Rogue, and more.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Premium%20Facilities/pixlr-image-generator-68731e0890f0ce93d662ed33.png" class="card-img-top img-fluid" alt="Recovery Lounge">
+          <div class="card-body">
+            <h5 class="card-title text-info">Recovery Lounge</h5>
+            <p class="card-text">Foam rollers, massage chairs, Normatec boots, and deep stretch areas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+          <img src="https://darsana.sirv.com/Project%20GYM/service%20cards/Premium%20Facilities/pixlr-image-generator-68731e5e488817640ae43d5d.png" class="card-img-top img-fluid" alt="Locker Room">
+          <div class="card-body">
+            <h5 class="card-title text-info">Luxury Amenities</h5>
+            <p class="card-text">Spa-style locker rooms, rain showers, steam & towel service.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="container py-5">
+    <h3 class="text-center mb-4">Member Impressions</h3>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="bg-dark p-4 rounded shadow">
+          <p class="mb-1">“This feels more like a resort than a gym — I love spending time here.”</p>
+          <small class="text-info">– Arjun S.</small>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="bg-dark p-4 rounded shadow">
+          <p class="mb-1">“Everything is spotless, high-end, and beautifully designed.”</p>
+          <small class="text-info">– Meera K.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="container text-center py-5">
+    <h2 class="mb-3 text-info">Experience Excellence</h2>
+    <p class="lead">Tour our facilities and discover why GymX is more than just a gym.</p>
+    <a href="contact.html" class="btn btn-info btn-lg mt-3">Schedule a Tour</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    &copy; 2025 GymX. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ======= start Chatbot Widget ======= -->
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6872daa6380ab07f195c0462' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+<!-- ======= Chatbot Widget End ======= -->
+</body>
+</html>

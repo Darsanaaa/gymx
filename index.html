@@ -1,0 +1,1437 @@
+*index.html*
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald&display=swap" rel="stylesheet" />
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>GymX</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: black;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      min-height: 56px;
+    }
+    .navbar .logo {
+      font-size: 1.75rem;
+      color: #00ffea;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #00ffea;
+      background: #343a40;
+    }
+    .navbar-toggler {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      margin-left: 1rem;
+    }
+    .navbar-toggler span {
+      height: 4px;
+      width: 100%;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0.5rem 1rem;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        background: #212529;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .nav-links li {
+        width: 100%;
+      }
+      .nav-links li a {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid #343a40;
+      }
+      .navbar-toggler {
+        display: flex;
+      }
+    }
+    .content-spacer {
+      height: 56px;
+    }
+
+.home {
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20230610/pngtree-the-gym-scene-where-people-are-sitting-in-a-gym-image_2949922.jpg");
+  padding: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to both paragraphs simultaneously */
+.home .head {
+  animation: fadeSlideUp 1.2s ease forwards;
+}
+
+.head {
+  transition: transform 0.3s, color 0.3s;
+}
+
+.head:hover {
+  color: #00ffea;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+    .head { transition: transform 0.3s, color 0.3s; }
+    .head:hover { color: #00ffea; transform: scale(1.05); cursor: pointer; }
+
+    .services {
+      text-align: center;
+      color: white;
+      background-color: #111;
+      padding: 140px 20px;
+      background-image: url("https://static.vecteezy.com/system/resources/thumbnails/026/727/090/small_2x/gym-equipment-illustration-background-landscape-free-photo.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .service-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+    .service-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 20px;
+      border-radius: 20px;
+      width: 250px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-18px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .service-card { width: 100%; }
+    }
+    .service-card h4 { font-size: 22px; margin-bottom: 10px; color: #111; }
+    .service-card p { font-size: 16px; color: #444; }
+
+    .bmi {
+      text-align: center;
+      color: white;
+      background-color: #111;
+      padding: 200px;
+      background-image: url("https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg?semt=ais_hybrid&w=740");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    
+.bmi {
+  text-align: center;
+  color: white;
+  background-color: #111;
+  padding: 200px 20px;
+  background-image: url("https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg?semt=ais_hybrid&w=740");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Frosted glass container */
+.bmi-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(0, 255, 234, 0.1);
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  animation: cardFadeIn 1s ease-out forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+/* Heading */
+.bmi-card h2 {
+  font-size: 2.5rem;
+  color: #00ffea;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: glowFadeIn 1.5s ease-out forwards;
+}
+
+/* Inputs and button */
+.bmi-card input,
+.bmi-card button {
+  margin: 10px auto;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  animation: fieldFadeIn 1.2s ease-in forwards;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.bmi-card input {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.bmi-card input::placeholder {
+  color: #bbb;
+}
+
+.bmi-card button {
+  background-color: #00ffea;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.bmi-card button:hover {
+  background-color: #00d5c3;
+}
+
+/* Result text */
+#bmi-result {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 500;
+  animation: resultFadeIn 1s ease-in forwards;
+  opacity: 0;
+}
+
+/* Animations */
+@keyframes glowFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+  }
+}
+
+@keyframes fieldFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes resultFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* BMI Label Tag Styles */
+.bmi-label {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  animation: resultFadeIn 1s ease-in forwards;
+}
+
+/* Color-coded categories */
+.bmi-label.underweight {
+  background-color: #ffc107; /* Amber */
+  color: #000;
+}
+
+.bmi-label.normal {
+  background-color: #28a745; /* Green */
+  color: #fff;
+}
+
+.bmi-label.overweight {
+  background-color: #fd7e14; /* Orange */
+  color: #fff;
+}
+
+.bmi-label.obese {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+}
+
+
+     .store {
+  padding: 100px 0;
+  padding-bottom: 215px;
+  background-color: #1a1a1a;
+  text-align: center;
+  position: relative;
+  background-image: url("https://darsana.sirv.com/Project%20GYM/Home/Screenshot%202025-07-14%20051529.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  z-index: 1;
+}
+
+.store::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* overlay for readability */
+  z-index: -1;
+}
+
+#store h2 {
+  color: white;
+  animation: glowFadeIn 1.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 2;
+  position: relative;
+}
+
+/* Glow animation keyframes */
+@keyframes glowFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+  }
+}
+
+  .supplement-card {
+    position: relative;
+    z-index: 2;
+  }
+
+/* Neon glow + fade-in keyframes */
+@keyframes glowFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow:
+      0 0 5px #00ffea,
+      0 0 10px #00ffea,
+      0 0 20px #00ffea,
+      0 0 40px rgba(0, 255, 234, 0.3);
+  }
+}
+    .supplement-scroll {
+      scroll-snap-type: x mandatory;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: visible;
+      padding-top: 10px; 
+      padding-bottom: 10px;
+      gap: 20px;
+
+      /* Hide scrollbar */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .supplement-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .supplement-card {
+      background-color: #1b1b1b;
+      border-radius: 16px;
+      flex: 1 1 240px;
+      min-width: 200px;
+      max-width: 300px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0, 255, 234, 0.1);
+      scroll-snap-align: start;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .supplement-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(0, 255, 234, 0.3);
+      position: relative;
+      z-index: 10; 
+    }
+    .supplement-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+    .supplement-card h5 {
+      margin: 15px 0 10px;
+    }
+    .supplement-card a.btn {
+      margin-bottom: 15px;
+      border-color: #00ffea;
+      color: #00ffea;
+    }
+    .supplement-card a.btn:hover {
+      background-color: #00ffea;
+      color: black;
+    }
+.contact-section {
+  background-color: #111;
+  color: #f1f1f1;
+  padding: 100px 20px;
+  background-image: url("https://darsana.sirv.com/Project%20GYM/Home/ChatGPT%20Image%20Jul%2014%2C%202025%2C%2004_48_52%20AM.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.contact-header h2 {
+  font-size: 2.8rem;
+  color: #00ffea;
+}
+.contact-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  align-items: start;
+}
+
+.contact-info h3,
+.contact-form h3,
+.contact-map h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #00ffea;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-info p,
+.contact-info a {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.contact-info i {
+  color: #00ffea;
+  font-size: 1.1rem;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #00ffea88;
+  color: #00ffea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  font-size: 1.1rem;
+}
+.social-icons a:hover {
+  background-color: #00ffea;
+  color: #111;
+}
+
+/* Contact Form */
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #00ffea;
+  background: #1a1a1a;
+  color: #f1f1f1;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.contact-form button {
+  background: #00ffea;
+  color: #111;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.contact-form button:hover {
+  background: #00d2c2;
+}
+
+/* Map */
+.contact-map iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 234, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .social-icons {
+    justify-content: flex-start;
+  }
+}
+
+    footer {
+      text-align: center;
+      color: white;
+      padding: 20px;
+      background-color: #111;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal:target {
+      display: flex;
+    }
+    .modal-content {
+      background-color: #000;
+      padding: 30px 40px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(0, 255, 234, 0.4);
+      color: white;
+      position: relative;
+      text-align: left;
+    }
+    .modal-content h2 {
+      margin-bottom: 20px;
+      color: #00ffea;
+    }
+    .modal-content label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #00ffea;
+      border-radius: 6px;
+      background-color: #111;
+      color: white;
+    }
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: #00ffea;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .modal-content button:hover {
+      background-color: #00c2b2;
+    }
+    .close-btn {
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    .close-btn:hover {
+      color: #00ffea;
+    }
+
+ #Macro {
+      background-color: #0e0e0e;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      padding-top: 100px;
+      padding-bottom: 250px;
+    }
+
+    #Macro h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: #00ffea;
+      text-align: center;
+      margin-bottom: 40px;
+      animation: glowFadeIn 2s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes glowFadeIn {
+      to {
+        opacity: 1;
+        text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+      }
+    }
+
+    #Macro .planner-card {
+      background: linear-gradient(135deg, #00ffea0f, #007d7915);
+      border: 1px solid #00ffea55;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 234, 0.1);
+    }
+
+    #Macro .summary-layout {
+      display: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    #Macro .summary-layout .totals-box {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    #Macro .summary-layout .chart-container {
+      flex: 1;
+      max-width: 250px;
+      position: relative;
+      animation: fadeInChart 0.8s ease-out;
+    }
+
+    #Macro #macro-chart {
+      filter: drop-shadow(0 0 10px rgba(0, 255, 234, 0.3));
+    }
+
+    @keyframes fadeInChart {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #Macro .form-control,
+    #Macro .btn {
+      background-color: #1a1a1a;
+      border: 1px solid #00ffea80;
+      color: white;
+      font-size: 1rem;
+    }
+
+    #Macro .form-control:focus,
+    #Macro .btn:hover {
+      box-shadow: 0 0 10px #00ffea;
+    }
+
+    #Macro .meal-entry {
+      background-color: #151515;
+      border-left: 4px solid #00ffea;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      animation: slideUpFade 0.3s ease-out;
+      position: relative;
+      word-wrap: break-word;
+    }
+
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #Macro .delete-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: transparent;
+      border: none;
+      color: #ff4c4c;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #Macro .totals-box {
+      background-color: #111;
+      border: 2px solid #00ffea70;
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+
+    #Macro .error-box {
+      background-color: #cc1111;
+      color: white;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 0 15px #cc1111;
+      display: none;
+      text-align: left;
+      line-height: 1.6;
+      animation: fadeInError 0.5s ease forwards;
+      white-space: normal;
+      user-select: none;
+    }
+
+    @keyframes fadeInError {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #Macro #meal-list {
+      max-height: 250px;
+      overflow-y: auto;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 768px) {
+      #Macro .summary-layout {
+        flex-direction: column;
+      }
+
+      #Macro .summary-layout .chart-container {
+        margin-top: 20px;
+      }
+    }
+
+.quote-box {
+  color: #00ffea;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  animation: fadeInQuote 1s ease-in-out;
+}
+
+@keyframes fadeInQuote {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  
+/* ===== Responsive Adjustments for All Sections ===== */
+@media (max-width: 768px) {
+  .home {
+    padding: 150px 20px;
+  }
+
+  .home .head font[size="50"] {
+    font-size: 2.2rem !important;
+  }
+
+  .home .head font[size="5"] {
+    font-size: 1rem !important;
+  }
+
+  .services {
+    padding: 100px 15px;
+  }
+
+  .bmi {
+    padding: 100px 15px;
+  }
+
+  #Macro {
+    padding-top: 60px;
+    padding-bottom: 120px;
+  }
+
+  #Macro .planner-card {
+    padding: 20px 15px;
+  }
+
+  .store {
+    padding: 80px 20px;
+    padding-bottom: 150px;
+  }
+
+  .contact-section {
+    padding: 80px 20px;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar .logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .home {
+    padding: 100px 15px;
+  }
+
+  .home .head font[size="50"] {
+    font-size: 1.8rem !important;
+  }
+
+  .home .head font[size="5"] {
+    font-size: 0.9rem !important;
+  }
+
+  .service-card {
+    padding: 20px 15px;
+  }
+
+  .bmi-card {
+    padding: 30px 20px;
+  }
+
+  .contact-header h2 {
+    font-size: 2rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+  }
+
+  .quote-box {
+    font-size: 1rem;
+    padding: 15px;
+  }
+}
+
+</style>
+</head>
+<body>
+    <!-- Navbar Start -->
+  <nav class="navbar">
+    <a href="#" class="logo">GymX</a>
+    <button class="navbar-toggler" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#bmi">BMI</a></li>
+      <li><a href="#Macro">Calorie planner</a></li>
+      <li><a href="#store">Store</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#loginModal">Login</a></li>
+    </ul>
+  </nav>
+  <!-- Navbar End -->
+
+  <div class="content-spacer"></div> <!-- Push content below navbar -->
+
+  <section class="home">
+  <p class="head"><font size="50">Unleash&nbsp;Your&nbsp;Inner&nbsp;Beast</font></p>
+  <p class="head"><font size="5">Join GymX and Transform Your Life</font></p>
+  
+  <div class="quote-box" id="quoteBox">
+    <!-- Quote will be inserted here by JavaScript -->
+  </div>
+</section>
+
+
+  <section id="services" class="services">
+  <h3><font size="10">Our&nbsp;Services</font></h3>
+  <div class="service-boxes">
+    <a href="personal-training.html" class="service-card" data-aos="fade-up" style="text-decoration:none; color:inherit;">
+      <h4>Personal Training</h4>
+      <p>Join fun and energetic group classes like <b>Zumba, Yoga, HIIt, Dance,</b> and more - all led by expert trainers to keep you active..</p><br>
+    </a>
+    <a href="group-classes.html" class="service-card" data-aos="fade-up" style="text-decoration:none; color:inherit;">
+      <h4>Group Fitness Classes</h4>
+      <p>Join fun and energetic group classes like <b>Zumba, Yoga, HIIt, Dance,</b> and more - all led by expert trainers to keep you active.</p><br>
+    </a>
+    <a href="virtual-training.html" class="service-card" data-aos="fade-up" style="text-decoration:none; color:inherit;">
+      <h4>Virtual & Online Training</h4>
+      <p>Join our <b>live and recorded workout sessions</b> from anywhere! Access <b>trainer support, fitness challenges,</b> and more.</p><br>
+    </a>
+    <a href="premium-facilities.html" class="service-card" data-aos="fade-up" style="text-decoration:none; color:inherit;">
+      <h4>Premium Facilities</h4>
+      <p>Enjoy <b>clean locker rooms, steam & sauna, cafe lounge-speed, smart lockers, and fast Wi-Fi</b> - for a comfy workout</p>
+    </a>
+  </div>
+</section>
+
+  <section id="bmi" class="bmi">
+  <div class="bmi-card">
+    <h2>BMI Calculator</h2>
+    <form>
+      <label for="weight">Weight (kg)</label>
+      <input type="number" class="form-control" id="weight" placeholder="Enter your weight" />
+
+      <label for="height">Height (cm)</label>
+      <input type="number" class="form-control" id="height" placeholder="Enter your height" /><br />
+
+      <button type="button" class="btn btn-primary" onclick="calculateBMI()">Calculate</button>
+      <p id="bmi-result"></p>
+    </form>
+  </div>
+</section>
+
+ <!-- calorie and macro  -->
+<section class="Macro" id="Macro">
+  <div class="container">
+    <h2>Calorie & Macro Planner</h2>
+    <div class="planner-card">
+      <input list="food-list" type="text" id="meal" placeholder="e.g. Grilled Chicken" class="form-control mb-2" autocomplete="off" />
+      <datalist id="food-list">
+        <option value="Grilled Chicken"></option>
+        <option value="Boiled Egg"></option>
+        <option value="Brown Rice"></option>
+        <option value="Oatmeal"></option>
+        <option value="Banana"></option>
+      </datalist>
+
+      <input type="number" id="quantity" placeholder="Enter quantity (grams)" class="form-control mb-2" min="1" />
+      <select id="meal-type" class="form-control mb-3">
+        <option disabled selected>Select Meal Type</option>
+        <option>Breakfast</option>
+        <option>Lunch</option>
+        <option>Dinner</option>
+        <option>Snacks</option>
+      </select>
+      <button class="btn btn-outline-light btn-block mb-3" onclick="addMeal()">Add Meal</button>
+
+      <div class="error-box" id="error-msg" role="alert" aria-live="assertive"></div>
+      <div id="meal-list"></div>
+
+      <div class="summary-layout" id="summary-section">
+        <div class="totals-box">
+          <div>Total Meals Added: <span id="meal-count">0</span></div>
+          <div>🔥 Calories: <span id="total-calories">0</span> kcal</div>
+          <div>🥩 Protein: <span id="total-protein">0</span> g</div>
+          <div>🍞 Carbs: <span id="total-carbs">0</span> g</div>
+          <div>🧈 Fat: <span id="total-fat">0</span> g</div>
+        </div>
+        <div class="chart-container">
+          <canvas id="macro-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+  <!-- 🆕 Supplements Section -->
+  <section id="store" class="store">
+    <div class="container">
+      <h2 class="mb-5">Supplements</h2>
+      <div class="supplement-scroll">
+        <div class="supplement-card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Creatine/fotor-ai-2025061945911.jpg" alt="Creatine">
+          <h5>Creatine</h5>
+          <a href="supplements.html#creatine" class="btn btn-outline-light btn-sm">Explore</a>
+        </div>
+        <div class="supplement-card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Whey%20protein/fotor-ai-2025061945322.jpg" alt="Whey Protein">
+          <h5>Whey Protein</h5>
+          <a href="supplements.html#whey" class="btn btn-outline-light btn-sm">Explore</a>
+        </div>
+        <div class="supplement-card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Pre-workout/fotor-ai-202506194571.jpg" alt="Pre-Workout">
+          <h5>Pre-Workout</h5>
+          <a href="supplements.html#preworkout" class="btn btn-outline-light btn-sm">Explore</a>
+        </div>
+        <div class="supplement-card">
+          <img src="https://darsana.sirv.com/Project%20GYM/Supplements/Omega-3/fotor-ai-2025070422026.jpg" alt="Omega-3">
+          <h5>Omega-3</h5>
+          <a href="supplements.html#omega3" class="btn btn-outline-light btn-sm">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section id="contact" class="contact-section">
+  <div class="contact-header">
+    <h2><i class="fas fa-id-card"></i> Contact <span class="accent">GymX</span></h2>
+    <p>We’re here to help you crush your fitness goals.</p>
+  </div>
+
+  <div class="contact-grid">
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h3><i class="fas fa-phone-alt"></i> Get in Touch</h3>
+      <p><i class="fas fa-phone"></i> <a href="tel:+91959564305">+91 95956 4305</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:gymx56@gmail.com">gymx56@gmail.com</a></p>
+      <p><i class="fas fa-clock"></i> <strong>Hours:</strong><br>Mon–Sat: 6am–10pm<br>Sun: Closed</p>
+      <p><i class="fas fa-map-marker-alt"></i> Gold's Gym, Kochi, Kerala</p>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1DcvMuHQsS/?mibextid=wwXIfr" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/__.gym_x__?igsh=eG85OGd5OWJ4bjM3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/Gym_X123" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com/@gymx07?feature=shared" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h3><i class="fas fa-envelope-open-text"></i> Send a Message</h3>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Map -->
+    <div class="contact-map">
+      <h3><i class="fas fa-location-dot"></i> Find Us</h3>
+      <iframe
+        src="https://maps.google.com/maps?q=Gold's%20Gym%20Kochi&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+  <footer>&copy; 2025 GymX Website</footer>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close-btn">&times;</a>
+      <h2>Login to GymX</h2>
+      <form>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  <!-- BMI start-->
+<script>
+  function calculateBMI() {
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
+    const resultElement = document.getElementById("bmi-result");
+
+    if (!weight || !height || weight <= 0 || height <= 0) {
+      resultElement.innerHTML = "⚠️ Please enter valid weight and height.";
+    } else {
+      const heightInMeters = height / 100;
+      const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
+      let category = "";
+      let labelClass = "";
+
+      if (bmi < 18.5) {
+        category = "Underweight";
+        labelClass = "underweight";
+      } else if (bmi >= 18.5 && bmi < 24.9) {
+        category = "Normal";
+        labelClass = "normal";
+      } else if (bmi >= 25 && bmi < 29.9) {
+        category = "Overweight";
+        labelClass = "overweight";
+      } else {
+        category = "Obese";
+        labelClass = "obese";
+      }
+
+      resultElement.innerHTML = `
+        Your BMI is ${bmi}
+        <span class="bmi-label ${labelClass}">${category}</span>
+      `;
+    }
+
+    // Restart animation
+    resultElement.style.opacity = 0;
+    resultElement.style.animation = "none";
+    void resultElement.offsetWidth;
+    resultElement.style.animation = "resultFadeIn 1s ease-in forwards";
+  }
+</script>
+  <!-- BMI end-->
+    <!-- ======= start Chatbot Widget ======= -->
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6872daa6380ab07f195c0462' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+<!-- ======= Chatbot Widget End ======= -->
+ <!-- Calorie and macro planner start-->
+  <script>
+    const foods = {
+      "grilled chicken": { calories: 165, protein: 31, carbs: 0, fat: 3.6 },
+      "boiled egg": { calories: 78, protein: 6, carbs: 0.6, fat: 5 },
+      "brown rice": { calories: 215, protein: 5, carbs: 45, fat: 1.8 },
+      "oatmeal": { calories: 150, protein: 5, carbs: 27, fat: 3 },
+      "banana": { calories: 89, protein: 1.1, carbs: 23, fat: 0.3 }
+    };
+
+    let totalCalories = 0, totalProtein = 0, totalCarbs = 0, totalFat = 0, mealCount = 0;
+    let macroChart;
+
+    const doughnutText = {
+      id: 'doughnutText',
+      afterDraw(chart) {
+        const { ctx } = chart;
+        const { top, width, height } = chart.chartArea;
+        const text = chart.options.plugins.doughnutText.text;
+        ctx.save();
+        ctx.font = `bold ${width * 0.2}px 'Oswald', sans-serif`;
+        ctx.fillStyle = '#00ffea';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, width / 2, height / 2 + top);
+        ctx.font = `normal ${width * 0.08}px 'Oswald', sans-serif`;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText('kcal', width / 2, height / 2 + top + (width * 0.15));
+        ctx.restore();
+      }
+    };
+
+    const initializeChart = () => {
+      const ctx = document.getElementById('macro-chart').getContext('2d');
+      macroChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Protein (g)', 'Carbs (g)', 'Fat (g)'],
+          datasets: [{
+            data: [1, 1, 1],
+            backgroundColor: ['#00ffea', '#ffc107', '#e91e63'],
+            borderColor: '#1a1a1a',
+            borderWidth: 4,
+            hoverOffset: 15,
+            cutout: '70%'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          animation: { animateScale: true, animateRotate: true },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                color: '#ffffff',
+                font: { family: "'Oswald', sans-serif", size: 14 },
+                padding: 20
+              }
+            },
+            tooltip: {
+              backgroundColor: '#000',
+              titleColor: '#00ffea',
+              bodyColor: '#fff',
+              padding: 10,
+              cornerRadius: 8,
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || '';
+                  const value = context.parsed || 0;
+                  const total = context.dataset.data.reduce((sum, val) => sum + val, 0);
+                  const percentage = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+                  return `${label}: ${value.toFixed(1)}g (${percentage}%)`;
+                }
+              }
+            },
+            doughnutText: { text: '0' }
+          }
+        },
+        plugins: [doughnutText]
+      });
+    };
+
+    function updateTotals() {
+      document.getElementById("meal-count").textContent = mealCount;
+      document.getElementById("total-calories").textContent = totalCalories.toFixed(1);
+      document.getElementById("total-protein").textContent = totalProtein.toFixed(1);
+      document.getElementById("total-carbs").textContent = totalCarbs.toFixed(1);
+      document.getElementById("total-fat").textContent = totalFat.toFixed(1);
+
+      document.getElementById("summary-section").style.display = mealCount > 0 ? "flex" : "none";
+
+      if (macroChart) {
+        macroChart.data.datasets[0].data = [totalProtein, totalCarbs, totalFat];
+        macroChart.options.plugins.doughnutText.text = totalCalories.toFixed(1);
+        macroChart.update();
+      }
+    }
+
+    function showError(msgs) {
+      const e = document.getElementById("error-msg");
+      e.innerHTML = msgs.map(m => `• ${m}`).join('<br>');
+      e.style.display = "block";
+    }
+
+    function hideError() {
+      const e = document.getElementById("error-msg");
+      e.style.display = "none";
+      e.innerHTML = '';
+    }
+
+    function addMeal() {
+      const nameInput = document.getElementById("meal"),
+        quantityInput = document.getElementById("quantity"),
+        mealTypeSelect = document.getElementById("meal-type"),
+        name = nameInput.value.trim().toLowerCase(),
+        quantity = parseFloat(quantityInput.value),
+        type = mealTypeSelect.value,
+        errors = [];
+
+      if (!name) errors.push("Meal name is required.");
+      else if (!foods[name]) errors.push("Unknown meal. Try: Grilled Chicken, Banana, etc.");
+
+      if (isNaN(quantity) || quantity <= 0) errors.push("Quantity must be a number > 0.");
+      if (mealTypeSelect.selectedIndex === 0) errors.push("Select a meal type.");
+
+      if (errors.length) return showError(errors);
+      hideError();
+
+      const item = foods[name],
+        factor = quantity / 100,
+        calories = +(item.calories * factor).toFixed(1),
+        protein = +(item.protein * factor).toFixed(1),
+        carbs = +(item.carbs * factor).toFixed(1),
+        fat = +(item.fat * factor).toFixed(1);
+
+      const entry = document.createElement("div");
+      entry.className = "meal-entry";
+      entry.innerHTML = `<button class="delete-btn" onclick="deleteMeal(this, ${calories}, ${protein}, ${carbs}, ${fat})">×</button><strong>${capitalize(type)}</strong> - ${capitalizeWords(name)} (${quantity}g)<br>🔥 <b>${calories}</b> kcal | 🥩 <b>${protein}g</b> Protein | 🍞 <b>${carbs}g</b> Carbs | 🧈 <b>${fat}g</b> Fat`;
+
+      document.getElementById("meal-list").prepend(entry);
+      totalCalories += calories;
+      totalProtein += protein;
+      totalCarbs += carbs;
+      totalFat += fat;
+      mealCount++;
+      updateTotals();
+      clearInputs();
+    }
+
+    function deleteMeal(btn, c, p, carb, f) {
+      btn.parentElement.remove();
+      totalCalories -= c;
+      totalProtein -= p;
+      totalCarbs -= carb;
+      totalFat -= f;
+      mealCount--;
+      updateTotals();
+    }
+
+    function clearInputs() {
+      document.getElementById("meal").value = "";
+      document.getElementById("quantity").value = "";
+      document.getElementById("meal-type").selectedIndex = 0;
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function capitalizeWords(str) {
+      return str.replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    window.onload = () => initializeChart();
+  </script>
+ <!-- Calorie and macro planner end-->
+ <script>
+  const quotes = [
+    "Push yourself because no one else is going to do it for you.",
+    "Discipline is the bridge between goals and accomplishment.",
+    "No pain, no gain. Shut up and train.",
+    "Sweat is just fat crying.",
+    "The body achieves what the mind believes.",
+    "Don’t count the days. Make the days count.",
+    "Results happen over time, not overnight. Work hard, stay consistent.",
+    "Fall in love with the process and the results will come.",
+    "The gym is not just about fitness. It's about becoming the best version of yourself."
+  ];
+
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quoteBox = document.getElementById('quoteBox');
+  quoteBox.textContent = `"${quotes[randomIndex]}"`;
+</script>
+
+</body>
+</html>
